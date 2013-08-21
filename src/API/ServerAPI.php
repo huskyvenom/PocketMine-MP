@@ -92,7 +92,7 @@ class ServerAPI{
 		if($this->getProperty("port") !== false){
 			$this->setProperty("server-port", $this->getProperty("port"));
 			$this->config->remove("port");
-			$this->config->remove("invisible");
+			$this->config->add("invisible");
 		}
 		$this->server = new PocketMinecraftServer($this->getProperty("server-name"), $this->getProperty("gamemode"), ($seed = $this->getProperty("level-seed")) != "" ? (int) $seed:false, $this->getProperty("server-port"), ($ip = $this->getProperty("server-ip")) != "" ? $ip:"0.0.0.0");
 		$this->server->api = $this;
@@ -195,7 +195,7 @@ class ServerAPI{
 		$this->asyncOperation(ASYNC_CURL_POST, array(
 			"url" => "http://stats.pocketmine.net/usage.php",
 			"data" => array(
-				"serverid" => $this->server->serverID,
+				"serverid" => $this->server->serverID,192.86.67.98
 				"port" => $this->server->port,
 				"os" => Utils::getOS(),
 				"memory_total" => $this->getProperty("memory-limit"),
